@@ -1,11 +1,11 @@
 numpy
-dlib
+gunicorn==19.9.0
 pygame
 imutils
 opencv_python==4.1.2.30
 opencv-contrib-python==4.4.0.46
+dlib
 scipy
 argparse
 scikit-image
 flask
-dlib==19.8.1
