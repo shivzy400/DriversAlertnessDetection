@@ -1,0 +1,10 @@
+numpy
+dlib
+pygame
+imutils
+opencv_python==4.1.2.30
+opencv-contrib-python==4.4.0.46
+scipy
+argparse
+scikit-image
+flask

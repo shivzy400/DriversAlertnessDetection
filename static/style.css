@@ -73,8 +73,6 @@ a.btn:hover {
 
 .video-container {
     width: 100%;
-    min-height: 200px;
-    border: 2px solid #000;
 }
 .video-container #video-frame {
     width: 100%;
