@@ -2,8 +2,8 @@ numpy
 gunicorn==19.9.0
 pygame
 imutils
-opencv_python==4.1.2.30
-opencv-contrib-python==4.4.0.46
+opencv_python
+opencv-contrib-python
 dlib
 scipy
 argparse
