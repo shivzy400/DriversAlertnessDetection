@@ -1,11 +1,12 @@
-from flask import Flask , render_template , redirect , url_for , Response , flash , request
-from modules.forms import SettingsForm
-from camera import VideoCamera
+from flask import Flask, render_template , redirect , url_for , Response , flash , request
 from flask_sqlalchemy import SQLAlchemy
+from camera import VideoCamera
+from forms import SettingsForm
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'a5c5cbdf1428d6fe3f40a3114eea2ac4'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///settings.db'
+
 db = SQLAlchemy(app)
 
 #model

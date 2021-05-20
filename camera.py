@@ -7,9 +7,10 @@ import pygame
 import time
 import dlib
 import cv2
+import os
 
 face_cascade=cv2.CascadeClassifier("haarcascades/haarcascade_frontalface_default.xml")
-ds_factor= 0.8
+ds_factor= 0.7
 shape_predictor = "model/shape_predictor_68_face_landmarks.dat"
 detector = dlib.get_frontal_face_detector()
 predictor = dlib.shape_predictor(shape_predictor)
