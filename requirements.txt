@@ -9,3 +9,5 @@ scipy
 argparse
 scikit-image
 flask
+flask-WTF==0.14.3
+flask-sqlalchemy

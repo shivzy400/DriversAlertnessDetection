@@ -24,15 +24,15 @@ class VideoCamera(object):
     
     def __init__(self) :
         self.video = cv2.VideoCapture(0)
-        self.LOW_CONTRAST_THRESH = 0.35
+        self.LOW_CONTRAST_THRESH = 0
         self.EAR_THREASH_HOLD = 0.3
         self.EAR_FRAME_PIPLINE = 50
         self.DIVERSION_FRAME_TRESHHOLD = 50
         self.EYE_DIVERSION_COUNTER = 0
         self.DIVERSION_COUNTER = 0
         self.ALERTING = False
-        self.REST_ALERT_THRESH = 5
-        self.REST_ALERT_FRAME_THRESH = 3
+        self.REST_ALERT_THRESH = 0
+        self.REST_ALERT_FRAME_THRESH = 0
         self.ALERT_COUNTER = 0
         self.FRAME_COUNTER = 2
         self.message = ''
