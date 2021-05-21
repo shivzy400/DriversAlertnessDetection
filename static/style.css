@@ -16,23 +16,28 @@
 .logo {
     height: 48px;
     padding:2px 10px;
-    color: black;
+    color: #485460;
     font-size: 26px;
     
 }
+.logo:hover {
+    color: #1e272e;
+    transition: 0.3s;
+}
+
 
 .icon-bar {
     background: darkslategrey;
 }
 
 li a {
-    color:#3c1361;
+    color:#1e272e;
 }
 
 .big-text {
     font-size: 48px;
     margin:20px 0;
-    color: #52307c; 
+    color: #485460; 
 }
 
 .subtext {
@@ -51,27 +56,29 @@ a.btn {
 }
 
 a.btn-style {
-    background-color: #52307c;
-    border: 3px solid #52307c;
+    background-color: #485460;
+    border: 3px solid #485460;
     color : #ffffff
 }
 
 a.btn-style-outline {
     background-color: white;
-    border: 3px solid #52307c;
-    color : #52307c
+    border: 3px solid #485460;
+    color : #485460
 }
 
 a.btn-style:hover {
-    background-color: #3c1361;
-    border: 3px solid #3c1361;
+    background-color: #1e272e;
+    border: 3px solid #1e272e;
     box-shadow: 5px 5px 10px #999;
     transition: 0.2s;
     color : #ffffff;
 }
 
 a.btn-style-outline:hover {
-    border: 3px solid #3c1361;
+    background-color: #485460;
+    border: 3px solid #485460;
+    color : #ffffff;
     box-shadow: 5px 5px 10px #999;
     transition: 0.2s;
 }

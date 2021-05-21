@@ -6,7 +6,7 @@
             <div class="col-sm-6 banner-info">
                 <h1>A Project On</h1>
                 <p class="big-text">Driver's Alertness Detection</p>
-                <p class="subtext">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi, magni, odio pariatur neque necessitatibus asperiores quia perferendis optio accusantium recusandae consectetur quos ea dolor quo totam cupiditate ad voluptate maiores.</p>
+                <p class="subtext">As time advanced, development of Driver’s Drowsiness Detection system has also been in progress and a key topic of research for many people in various institutes and industries. And many people in past years have introduced different concepts and models for the working of an effective system with a best accuracy rate.</p>
                 <a class="btn btn-style-outline" href="{{ url_for('settings') }}">Settings</a>
                 <a class="btn btn-style" href="{{ url_for('detection') }}">Start</a>
             </div>
@@ -14,23 +14,7 @@
                 <img src="{{ url_for('static' , filename='img/home_img.jpg') }}" class="img-responsive" alt="">
             </div>
         </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <article class="media content-section">
-                    <div class="media-body">
-                    <legend class="article-title border-bottom mb 4">Configurations (temporary)</legend>
-                    <p class="article-content">
-                        Low Contrast Threshold : {{ videocam.LOW_CONTRAST_THRESH }} <br>
-                        Max EAR Frame Threshold : {{ videocam.EAR_FRAME_PIPLINE }} <br>
-                        Diversion Frame Threshold : {{ videocam.DIVERSION_FRAME_TRESHHOLD }} <br>
-                        Rest Alert Threshold : {{ videocam.REST_ALERT_THRESH }} <br>
-                        Rest Alert Frame Threshold : {{ videocam.REST_ALERT_FRAME_THRESH }} <br>
-
-                    </p>
-                    </div>
-                </article>
-            </div>
-        </div>
+    
     </div>
 
 

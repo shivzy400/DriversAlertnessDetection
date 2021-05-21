@@ -35,19 +35,12 @@ videocam = VideoCamera()
 @app.route('/')
 @app.route('/home')
 def home() :
-    global videocam
-    # initialize thresholds through database
-    setting = Settings.query.get(1)
-    videocam.LOW_CONTRAST_THRESH = setting.lct
-    videocam.EAR_FRAME_PIPLINE = setting.mef
-    videocam.DIVERSION_FRAME_TRESHHOLD = setting.dft
-    videocam.REST_ALERT_THRESH = setting.rat
-    videocam.REST_ALERT_FRAME_THRESH = setting.raft
-    return render_template('home.html' , title='Home Page' , videocam = videocam)
+
+    return render_template('home.html' , title='Home Page')
 
 @app.route('/detection')
 def detection() :
-    global videocam
+
     return render_template('detection.html' , title='Detection')
 
 def gen(camera):
@@ -59,14 +52,20 @@ def gen(camera):
                
 @app.route('/video_feed')
 def video_feed():
-    global videocam
+    videocam = VideoCamera()
+    # initialize thresholds through database
+    setting = Settings.query.get(1)
+    videocam.LOW_CONTRAST_THRESH = setting.lct
+    videocam.EAR_FRAME_PIPLINE = setting.mef
+    videocam.DIVERSION_FRAME_TRESHHOLD = setting.dft
+    videocam.REST_ALERT_THRESH = setting.rat
+    videocam.REST_ALERT_FRAME_THRESH = setting.raft
     return Response(gen(videocam) ,
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
 @app.route('/settings' , methods=['GET' , 'POST']) 
 def settings() :
 
-    global videocam
     setting_form = SettingsForm()
     setting = Settings.query.get(1)
     if setting_form.validate_on_submit() :
@@ -76,12 +75,6 @@ def settings() :
         setting.rat = setting_form.restAlertThresh.data
         setting.raft = setting_form.restAlertFrameThresh.data
         db.session.commit()
-
-        videocam.LOW_CONTRAST_THRESH = setting_form.lowConThresh.data
-        videocam.EAR_FRAME_PIPLINE = setting_form.earFramePipeline.data
-        videocam.DIVERSION_FRAME_TRESHHOLD = setting_form.divFrameThresh.data
-        videocam.REST_ALERT_THRESH = setting_form.restAlertThresh.data
-        videocam.REST_ALERT_FRAME_THRESH = setting_form.restAlertFrameThresh.data
 
         flash('Changes Saved Successfully' , 'success')
         return redirect(url_for('home'))

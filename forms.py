@@ -9,7 +9,7 @@ class SettingsForm(FlaskForm) :
     )
 
     earFramePipeline = IntegerField(
-        'Max Ear Frame Threshold' ,
+        'Max EAR Frame Threshold' ,
         validators = [DataRequired() , NumberRange(min=15 , max=60)]
     )
 

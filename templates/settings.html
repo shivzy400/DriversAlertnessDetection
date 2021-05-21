@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-sm-6 banner-info">
                 <p class="big-text">Settings</p>
-                <p class="subtext">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi, magni, odio pariatur neque necessitatibus asperiores quia perferendis optio accusantium recusandae consectetur quos ea dolor quo totam cupiditate ad voluptate maiores.</p>
+                <p class="subtext">You can configure the thresholds as per your convinience. Just fill the values in the given form and click 'Save Changes'. Only values within certain range will be accepted.</p>
                 <a class="btn btn-style" href="{{ url_for('home') }}">Home</a>
             </div>
             <div class="col-sm-6 banner-image">
@@ -81,7 +81,7 @@
                             {% endif %}
                         </div>
                         <div class="form-group">
-                            {{ form.submit(class="btn btn-outline-info") }}
+                            {{ form.submit(class="btn btn-outline-secondary") }}
                         </div>
                     </form>
                 </div>

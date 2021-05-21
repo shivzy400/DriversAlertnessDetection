@@ -14,6 +14,7 @@ ds_factor= 0.7
 shape_predictor = "model/shape_predictor_68_face_landmarks.dat"
 detector = dlib.get_frontal_face_detector()
 predictor = dlib.shape_predictor(shape_predictor)
+print(__name__)
 
 (lStart, lEnd) = face_utils.FACIAL_LANDMARKS_IDXS['left_eye']
 (rStart, rEnd) = face_utils.FACIAL_LANDMARKS_IDXS['right_eye']
@@ -39,6 +40,9 @@ class VideoCamera(object):
         self.message = ''
     
     def __del__(self) :
+        print(self.LOW_CONTRAST_THRESH)
+        print(self.EAR_FRAME_PIPLINE)
+        print(self.DIVERSION_FRAME_TRESHHOLD)
         self.video.release()
 
     def get_frame(self) :
