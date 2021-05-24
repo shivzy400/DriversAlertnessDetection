@@ -104,7 +104,6 @@ class VideoCamera(object):
                             if not self.ALERTING :
                                 pygame.mixer.music.play(-1)
                                 self.ALERTING = True
-                            #TODO : (SHIVAM) Send below alert back to front-end as response and put text
                             self.message = "You Are Drowsy"
                             cv2.putText(frame, self.message, (10,20), cv2.FONT_HERSHEY_SIMPLEX, 1.0, (0,0,255), 2)
                             
@@ -143,5 +142,4 @@ class VideoCamera(object):
                 ret, jpeg = cv2.imencode('.jpg', frame)
                 return jpeg.tobytes() , self.message
             else : 
-                #TODO : (SHIVAM) Add a no camera found alert pop-up on front-end
                 return None

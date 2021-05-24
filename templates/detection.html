@@ -4,23 +4,22 @@
 <div class="container">
 
     <div class="row">
-        <div class="col-sm-6">
-            <a class="btn btn-style" href="{{ url_for('home') }}">Home</a>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12">
+        <div class="col-md-12 text-center">
             <p class="subtext">Adjust your camera so that the face is visible for Detection process. For enabling the Image Enhancer reduce the light level.</p>
         </div>
     </div>
-    <div class="row">
-        <div class="col-sm-12">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
             <div class="video-container">
-                <img id="video-frame" src="{{ url_for('video_feed') }}">
+                <img id="video-frame" src="{{ url_for('video_feed') }}" alt="Loading Camera">
             </div>
         </div>
     </div>
-
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <a class="btn btn-full" href="{{ url_for('home') }}">Home</a>
+        </div>
+    </div>
 </div>
 
 {% endblock content %}

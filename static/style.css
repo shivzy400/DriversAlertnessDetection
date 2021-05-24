@@ -93,7 +93,7 @@ a.btn-style-outline:hover {
 }
 
 .video-container {
-    width: 100%;
+    width:100%;
 }
 .video-container #video-frame {
     width: 100%;
@@ -107,3 +107,18 @@ a.btn-style-outline:hover {
     border-radius: 3px;
     margin-bottom: 20px;
   }
+
+a.btn-full {
+    background-color: #485460;
+    border: 3px solid #485460;
+    color : #ffffff;
+    width: 99%;
+}
+
+a.btn-full:hover {
+    background-color: #1e272e;
+    border: 3px solid #1e272e;
+    box-shadow: 5px 5px 10px #999;
+    transition: 0.2s;
+    color : #ffffff;
+}
