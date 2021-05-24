@@ -14,7 +14,6 @@ ds_factor= 0.7
 shape_predictor = "model/shape_predictor_68_face_landmarks.dat"
 detector = dlib.get_frontal_face_detector()
 predictor = dlib.shape_predictor(shape_predictor)
-print(__name__)
 
 (lStart, lEnd) = face_utils.FACIAL_LANDMARKS_IDXS['left_eye']
 (rStart, rEnd) = face_utils.FACIAL_LANDMARKS_IDXS['right_eye']
@@ -36,19 +35,18 @@ class VideoCamera(object):
         self.REST_ALERT_THRESH = 0
         self.REST_ALERT_FRAME_THRESH = 0
         self.ALERT_COUNTER = 0
-        self.FRAME_COUNTER = 2
+        self.FRAME_COUNTER = 0
         self.message = ''
     
     def __del__(self) :
-        print(self.LOW_CONTRAST_THRESH)
-        print(self.EAR_FRAME_PIPLINE)
-        print(self.DIVERSION_FRAME_TRESHHOLD)
         self.video.release()
 
     def get_frame(self) :
             ret, frame = self.video.read()
             # print(frame)
+           
             if frame is not None :
+
                 frame=cv2.resize(frame,None,fx=ds_factor,fy=ds_factor,interpolation=cv2.INTER_AREA)                 
 
                 frame = cv2.flip(frame,1)
@@ -63,6 +61,7 @@ class VideoCamera(object):
                     color = (0, 0, 255)
 
                 cv2.putText(frame, text, (10, 250), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
+                cv2.putText(frame, f'Blink Counter : {str(self.ALERT_COUNTER)}', (10, 300), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0 , 0 , 255), 2)
                 faces = detector(gray, 0)
                 face_rectangle = face_cascade.detectMultiScale(gray, 1.3, 5)
 
@@ -80,7 +79,6 @@ class VideoCamera(object):
                                 pygame.mixer.music.play(-1)
                                 self.ALERTING = True
 
-                            #TODO : (SHIVAM) Send below alert back to front-end as response and remove put text
                             self.message = "Stay focus on road traveller"
                             cv2.putText(frame, self.message, (10,200), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0,0,255), 2)
                         else :
@@ -107,17 +105,20 @@ class VideoCamera(object):
                                 pygame.mixer.music.play(-1)
                                 self.ALERTING = True
                             #TODO : (SHIVAM) Send below alert back to front-end as response and put text
-                            self.message = "You are Drowsy"
+                            self.message = "You Are Drowsy"
                             cv2.putText(frame, self.message, (10,20), cv2.FONT_HERSHEY_SIMPLEX, 1.0, (0,0,255), 2)
+                            
                     else:
-                        if self.ALERT_COUNTER > self.REST_ALERT_THRESH :
-                            if self.FRAME_COUNTER < (self.REST_ALERT_FRAME_THRESH * 60) :
-                                if not ALERTING :
+                        if self.EYE_DIVERSION_COUNTER >= self.EAR_FRAME_PIPLINE :
+                            self.ALERT_COUNTER += 1
+                        if self.ALERT_COUNTER >= self.REST_ALERT_THRESH :
+                            if self.FRAME_COUNTER < (self.REST_ALERT_FRAME_THRESH) :
+                                if not self.ALERTING :
                                     pygame.mixer.music.play(-1)
-                                    ALERTING = True
+                                    self.ALERTING = True
                                 self.FRAME_COUNTER += 1
-                                #TODO : (SHIVAM) send below response to front-end
-                                self.message ="You should rest for sometime"
+                                
+                                self.message ="You should take Rest"
                                 cv2.putText(frame, self.message, (10,50), cv2.FONT_HERSHEY_SIMPLEX, 1.0, (0,0,255), 2)
                             else :
                                 self.ALERT_COUNTER = 0
