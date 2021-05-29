@@ -2,12 +2,10 @@ numpy
 gunicorn==19.9.0
 pygame
 imutils
-opencv_python
-opencv-contrib-python
+opencv-contrib-python-headless
 dlib
 scipy
 argparse
 scikit-image
 flask
 flask-WTF==0.14.3
-flask-sqlalchemy
